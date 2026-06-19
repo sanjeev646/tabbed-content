@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Tabbed Content</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    max-width: 500px;
+    margin: 60px auto;
+  }
+  .tabs {
+    display: flex;
+    border-bottom: 2px solid #ddd;
+  }
+  .tab-btn {
+    flex: 1;
+    padding: 12px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #777;
+  }
+  .tab-btn.active {
+    color: #222;
+    border-bottom: 3px solid #2266cc;
+    font-weight: bold;
+  }
+  .tab-content {
+    display: none;
+    padding: 20px 5px;
+    line-height: 1.5;
+  }
+  .tab-content.active { display: block; }
+</style>
+</head>
+<body>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showTab('home', this)">Home</button>
+    <button class="tab-btn" onclick="showTab('about', this)">About</button>
+    <button class="tab-btn" onclick="showTab('contact', this)">Contact</button>
+  </div>
+
+  <div class="tab-content active" id="home">
+    <h2>Home</h2>
+    <p>Welcome to our website! This is the home tab content.</p>
+  </div>
+
+  <div class="tab-content" id="about">
+    <h2>About</h2>
+    <p>We are a small team dedicated to building useful tools for everyone.</p>
+  </div>
+
+  <div class="tab-content" id="contact">
+    <h2>Contact</h2>
+    <p>Reach us at contact@example.com or call (555) 123-4567.</p>
+  </div>
+
+  <script>
+    function showTab(tabId, button) {
+      // Hide all tab contents
+      document.querySelectorAll('.tab-content').forEach(tab => {
+        tab.classList.remove('active');
+      });
+      // Remove active class from all buttons
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+
+      // Show selected tab and mark button active
+      document.getElementById(tabId).classList.add('active');
+      button.classList.add('active');
+    }
+  </script>
+
+</body>
+</html>
